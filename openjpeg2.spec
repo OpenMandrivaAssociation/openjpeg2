@@ -11,12 +11,18 @@ Photographic Experts Group (JPEG).
 
 Name: openjpeg2
 Version: 2.1.2
-Release: 1
+Release: 2
 Summary: An open-source JPEG 2000 codec 
 License: BSD
 Group: System/Libraries
 Url: http://www.openjpeg.org/
 Source0: https://github.com/uclouvain/openjpeg/archive/v%{version}.tar.gz
+# Remove bundled libraries
+Patch0: openjpeg2_remove-thirdparty.patch
+# Fix CVE-2016-9572 and CVE-2016-9573
+Patch1: 7b28bd2b723df6be09fe7791eba33147c1c47d0d.patch
+# Fix CVE-2016-9580 and CVE-2016-9581
+Patch2: cadff5fb6e73398de26a92e96d3d7cac893af255.patch
 BuildRequires: png-devel
 BuildRequires: tiff-devel
 BuildRequires: lcms2-devel
@@ -53,6 +59,9 @@ developing programs using the %{oname} library.
 %prep
 %setup -qn openjpeg-%{version}
 %apply_patches
+
+# Remove all third party libraries just to be sure
+rm -rf thirdparty
 
 %build
 %cmake \
