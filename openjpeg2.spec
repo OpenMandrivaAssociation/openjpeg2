@@ -19,8 +19,6 @@ Url: http://www.openjpeg.org/
 Source0: https://github.com/uclouvain/openjpeg/archive/v%{version}.tar.gz
 # Remove bundled libraries
 Patch0: openjpeg2_remove-thirdparty.patch
-# Fix CVE-2016-9580 and CVE-2016-9581
-Patch2: cadff5fb6e73398de26a92e96d3d7cac893af255.patch
 BuildRequires: png-devel
 BuildRequires: tiff-devel
 BuildRequires: lcms2-devel
