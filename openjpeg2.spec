@@ -73,6 +73,7 @@ rm -rf thirdparty
 sed -i 's!bindir=${prefix}//usr/bin!bindir=${prefix}/usr/bin!g' %{buildroot}/%{_libdir}/pkgconfig/libopenjp2.pc
 
 rm -rf %{buildroot}%{_docdir}
+rm -rf %{buildroot}%{_libdir}/libopenjp2.a
 
 %files
 %{_bindir}/*
