@@ -10,8 +10,8 @@ language. It has been developed in order to promote the use of JPEG\
 Photographic Experts Group (JPEG).
 
 Name: openjpeg2
-Version: 2.1.2
-Release: 2
+Version: 2.2.0
+Release: 1
 Summary: An open-source JPEG 2000 codec 
 License: BSD
 Group: System/Libraries
@@ -19,10 +19,6 @@ Url: http://www.openjpeg.org/
 Source0: https://github.com/uclouvain/openjpeg/archive/v%{version}.tar.gz
 # Remove bundled libraries
 Patch0: openjpeg2_remove-thirdparty.patch
-# Fix CVE-2016-9572 and CVE-2016-9573
-Patch1: 7b28bd2b723df6be09fe7791eba33147c1c47d0d.patch
-# Fix CVE-2016-9580 and CVE-2016-9581
-Patch2: cadff5fb6e73398de26a92e96d3d7cac893af255.patch
 BuildRequires: png-devel
 BuildRequires: tiff-devel
 BuildRequires: lcms2-devel
@@ -69,6 +65,7 @@ rm -rf thirdparty
   -DOPENJPEG_INSTALL_DATA_DIR:PATH=%{_datadir} \
   -DOPENJPEG_INSTALL_LIB_DIR:PATH=%{_lib} \
   -DBUILD_DOC=ON
+
 %make
 
 %install
@@ -76,6 +73,7 @@ rm -rf thirdparty
 sed -i 's!bindir=${prefix}//usr/bin!bindir=${prefix}/usr/bin!g' %{buildroot}/%{_libdir}/pkgconfig/libopenjp2.pc
 
 rm -rf %{buildroot}%{_docdir}
+rm -rf %{buildroot}%{_libdir}/libopenjp2.a
 
 %files
 %{_bindir}/*
