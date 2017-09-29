@@ -10,8 +10,8 @@ language. It has been developed in order to promote the use of JPEG\
 Photographic Experts Group (JPEG).
 
 Name: openjpeg2
-Version: 2.1.2
-Release: 2
+Version: 2.2.0
+Release: 1
 Summary: An open-source JPEG 2000 codec 
 License: BSD
 Group: System/Libraries
@@ -69,6 +69,7 @@ rm -rf thirdparty
   -DOPENJPEG_INSTALL_DATA_DIR:PATH=%{_datadir} \
   -DOPENJPEG_INSTALL_LIB_DIR:PATH=%{_lib} \
   -DBUILD_DOC=ON
+
 %make
 
 %install
