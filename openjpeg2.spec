@@ -1,7 +1,8 @@
 %define oname OpenJPEG
+%define instnme openjpeg
 
 %define major 7
-%define lib_name %mklibname openjp2_ %{major}
+%define lib_name %mklibname openjp2_%{major}
 %define lib_dev %mklibname %{name} -d
 
 %define common_description The OpenJPEG library is an open-source JPEG 2000 codec written in C\
@@ -16,7 +17,7 @@ Summary: An open-source JPEG 2000 codec
 License: BSD
 Group: System/Libraries
 Url: http://www.openjpeg.org/
-Source0: https://github.com/uclouvain/openjpeg/archive/v%{version}.tar.gz
+Source0: https://github.com/uclouvain/openjpeg/archive/%{name}-%{version}.tar.gz
 # Remove bundled libraries
 Patch0: openjpeg2_remove-thirdparty.patch
 BuildRequires: png-devel
@@ -61,6 +62,7 @@ rm -rf thirdparty
 
 %build
 %cmake \
+  -DCMAKE_BUILD_TYPE=Release \
   -DOPENJPEG_INSTALL_BIN_DIR:PATH=%{_bindir} \
   -DOPENJPEG_INSTALL_DATA_DIR:PATH=%{_datadir} \
   -DOPENJPEG_INSTALL_LIB_DIR:PATH=%{_lib} \
@@ -71,7 +73,8 @@ rm -rf thirdparty
 %install
 %makeinstall_std -C build
 sed -i 's!bindir=${prefix}//usr/bin!bindir=${prefix}/usr/bin!g' %{buildroot}/%{_libdir}/pkgconfig/libopenjp2.pc
-
+#mkdir %{buildroot}%{_libdir}
+mv %{_builddir}/%{instnme}-%{version}/build/bin/*.so.* %{buildroot}%{_libdir}/
 rm -rf %{buildroot}%{_docdir}
 rm -rf %{buildroot}%{_libdir}/libopenjp2.a
 
@@ -87,6 +90,6 @@ rm -rf %{buildroot}%{_libdir}/libopenjp2.a
 %doc AUTHORS.md CHANGELOG.md LICENSE NEWS.md README.md THANKS.md
 %{_includedir}/*
 %{_mandir}/man3/*
-%{_libdir}/*.so
+%{_libdir}/*.so.*
 %{_libdir}/openjpeg-*/*.cmake
 %{_libdir}/pkgconfig/libopenjp2.pc
