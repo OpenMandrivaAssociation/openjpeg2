@@ -20,6 +20,7 @@ Url: http://www.openjpeg.org/
 Source0: https://github.com/uclouvain/openjpeg/archive/%{name}-%{version}.tar.gz
 # Remove bundled libraries
 Patch0: openjpeg2_remove-thirdparty.patch
+Patch1: openjpeg2_install.patch
 BuildRequires: png-devel
 BuildRequires: tiff-devel
 BuildRequires: lcms2-devel
@@ -73,7 +74,7 @@ rm -rf thirdparty
 %install
 %makeinstall_std -C build
 sed -i 's!bindir=${prefix}//usr/bin!bindir=${prefix}/usr/bin!g' %{buildroot}/%{_libdir}/pkgconfig/libopenjp2.pc
-mv %{_builddir}/%{instnme}-%{version}/build/bin/*.so.* %{buildroot}%{_libdir}/
+
 rm -rf %{buildroot}%{_docdir}
 rm -rf %{buildroot}%{_libdir}/libopenjp2.a
 
@@ -90,5 +91,5 @@ rm -rf %{buildroot}%{_libdir}/libopenjp2.a
 %{_includedir}/*
 %{_mandir}/man3/*
 %{_libdir}/*.so
-%{_libdir}/openjpeg-*/*.cmake
+%{_libdir}/openjpeg-*/
 %{_libdir}/pkgconfig/libopenjp2.pc
