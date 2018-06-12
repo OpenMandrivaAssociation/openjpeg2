@@ -2,7 +2,7 @@
 %define instnme openjpeg
 
 %define major 7
-%define lib_name %mklibname openjp2_%{major}
+%define lib_name %mklibname openjp2_ %{major}
 %define lib_dev %mklibname %{name} -d
 
 %define common_description The OpenJPEG library is an open-source JPEG 2000 codec written in C\
@@ -73,7 +73,6 @@ rm -rf thirdparty
 %install
 %makeinstall_std -C build
 sed -i 's!bindir=${prefix}//usr/bin!bindir=${prefix}/usr/bin!g' %{buildroot}/%{_libdir}/pkgconfig/libopenjp2.pc
-#mkdir %{buildroot}%{_libdir}
 mv %{_builddir}/%{instnme}-%{version}/build/bin/*.so.* %{buildroot}%{_libdir}/
 rm -rf %{buildroot}%{_docdir}
 rm -rf %{buildroot}%{_libdir}/libopenjp2.a
@@ -90,6 +89,6 @@ rm -rf %{buildroot}%{_libdir}/libopenjp2.a
 %doc AUTHORS.md CHANGELOG.md LICENSE NEWS.md README.md THANKS.md
 %{_includedir}/*
 %{_mandir}/man3/*
-%{_libdir}/*.so.*
+%{_libdir}/*.so
 %{_libdir}/openjpeg-*/*.cmake
 %{_libdir}/pkgconfig/libopenjp2.pc
