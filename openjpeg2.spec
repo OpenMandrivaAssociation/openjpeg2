@@ -22,8 +22,8 @@ language. It has been developed in order to promote the use of JPEG\
 Photographic Experts Group (JPEG).
 
 Name: openjpeg2
-Version: 2.3.1
-Release: 2
+Version: 2.4.0
+Release: 1
 Summary: An open-source JPEG 2000 codec 
 License: BSD
 Group: System/Libraries
