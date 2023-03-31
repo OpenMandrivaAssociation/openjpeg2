@@ -23,7 +23,7 @@ Photographic Experts Group (JPEG).
 
 Name: openjpeg2
 Version: 2.5.0
-Release: 1
+Release: 2
 Summary: An open-source JPEG 2000 codec 
 License: BSD
 Group: System/Libraries
