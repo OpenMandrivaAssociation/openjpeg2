@@ -22,8 +22,8 @@ language. It has been developed in order to promote the use of JPEG\
 Photographic Experts Group (JPEG).
 
 Name: openjpeg2
-Version: 2.5.0
-Release: 2
+Version: 2.5.1
+Release: 1
 Summary: An open-source JPEG 2000 codec 
 License: BSD
 Group: System/Libraries
@@ -149,8 +149,8 @@ rm -rf %{buildroot}%{_libdir}/libopenjp2.a
 %{_includedir}/*
 %{_mandir}/man3/*
 %{_libdir}/*.so
-%{_libdir}/openjpeg-*/
 %{_libdir}/pkgconfig/libopenjp2.pc
+%{_libdir}/cmake/openjpeg-*
 
 %if %{with compat32}
 %files -n %{lib32name}
@@ -160,6 +160,6 @@ rm -rf %{buildroot}%{_libdir}/libopenjp2.a
 %files -n %{lib32dev}
 %doc AUTHORS.md CHANGELOG.md LICENSE NEWS.md README.md THANKS.md
 %{_prefix}/lib/*.so
-%{_prefix}/lib/openjpeg-*/
 %{_prefix}/lib/pkgconfig/libopenjp2.pc
+%{_prefix}/lib/cmake/openjpeg-*
 %endif
