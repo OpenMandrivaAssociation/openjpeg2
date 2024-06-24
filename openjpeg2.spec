@@ -22,12 +22,12 @@ language. It has been developed in order to promote the use of JPEG\
 Photographic Experts Group (JPEG).
 
 Name: openjpeg2
-Version: 2.5.1
+Version: 2.5.2
 Release: 1
 Summary: An open-source JPEG 2000 codec 
 License: BSD
 Group: System/Libraries
-Url: http://www.openjpeg.org/
+Url: https://www.openjpeg.org/
 Source0: https://github.com/uclouvain/openjpeg/archive/v%{version}/%{name}-%{version}.tar.gz
 # Remove bundled libraries
 Patch0: openjpeg2_remove-thirdparty.patch
